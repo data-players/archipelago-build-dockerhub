@@ -1,0 +1,10 @@
+version: '3.5'
+services:
+  middleware:
+    build:
+      dockerfile: ./Dockerfile.mid
+
+  frontend:
+    build:
+      dockerfile: ./Dockerfile.front
+
