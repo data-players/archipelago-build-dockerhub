@@ -9,8 +9,7 @@ build-midd:
 	$(hub) build --no-cache middleware
 
 push-front:
-	docker tag build-dockerhub_frontend dataplayers/archipelago-frontend:0.1 && docker push dataplayers/archipelago-frontend:0.1
+	docker tag archipelago-build-dockerhub_frontend dataplayers/archipelago-frontend:0.3 && docker push dataplayers/archipelago-frontend:0.3
 
 push-midd:
-	docker tag build-dockerhub_middleware dataplayers/archipelago-middleware:0.1 && docker push dataplayers/archipelago-middleware:0.1
-
+	docker tag archipelago-build-dockerhub_middleware dataplayers/archipelago-middleware:0.3 && docker push dataplayers/archipelago-middleware:0.3
