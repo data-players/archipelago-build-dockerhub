@@ -24,7 +24,7 @@ WORKDIR /archipelago/frontend
 
 RUN yarn install
 
-ADD ..project-*/addOn/frontend/ .
+ADD ./project-*/addOn/frontend/ .
 
 RUN yarn build
 
