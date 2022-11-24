@@ -22,9 +22,9 @@ RUN git checkout $SELECTED_BRANCH
 
 WORKDIR /archipelago/frontend
 
-RUN yarn install
-
 ADD ./addOn/frontend/ .
+
+RUN yarn install
 
 RUN yarn build
 
