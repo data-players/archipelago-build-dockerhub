@@ -29,7 +29,8 @@ module.exports = {
                   ldpNavigator.setAdapters([
                     new FetchAdapter({
                       headers:{
-                        'accept': 'application/ld+json'
+                        'accept': 'application/ld+json',
+                        'autorization' : ctx.meta.headers.autorization
                       }
                     })
                   ])

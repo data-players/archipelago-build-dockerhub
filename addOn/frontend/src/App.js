@@ -1,19 +1,18 @@
 import React from 'react';
 import { Admin, Resource } from 'react-admin';
-import { Layout, AppBar, theme } from '@semapps/archipelago-layout';
-import { LoginPage, LogoutButton, UserMenu } from '@semapps/auth-provider';
+import { LoginPage, LogoutButton } from '@semapps/auth-provider';
 import { createBrowserHistory as createHistory } from 'history';
 
 import HomePage from './HomePage';
 import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
-import * as resources from './resources';
 import customTheme from './customTheme';
+import * as resources from './resources';
+
+import Layout from './layout/Layout';
 
 const history = createHistory();
-const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
-const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} />;
 
 const App = () => (
   <Admin
@@ -24,7 +23,7 @@ const App = () => (
     authProvider={authProvider}
     dataProvider={dataProvider}
     i18nProvider={i18nProvider}
-    layout={LayoutWithUserMenu}
+    layout={Layout}
     theme={customTheme}
     loginPage={LoginPage}
     logoutButton={LogoutButton}
