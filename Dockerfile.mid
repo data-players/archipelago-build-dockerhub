@@ -22,7 +22,7 @@ RUN git checkout $SELECTED_BRANCH
 
 WORKDIR /archipelago/middleware
 
-COPY ./addOn/middleware/ .
+# COPY ./addOn/middleware/ .
 
 RUN yarn install
 
