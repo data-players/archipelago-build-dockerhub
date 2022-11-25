@@ -26,22 +26,25 @@ module.exports = {
               for ( let container of containers){
                 if (ctx.params.resourceUri.includes(container.path) && container.ldpDereferencePlan){
                   let ldpNavigator=new LDPNavigator();
+                  let headers = {
+                    'accept': 'application/ld+json',
+                  }
+                  if (ctx.meta.headers && ctx.meta.headers.authorization){
+                    headers.authorization = ctx.meta.headers.authorization
+                  }
                   ldpNavigator.setAdapters([
                     new FetchAdapter({
-                      headers:{
-                        'accept': 'application/ld+json',
-                        'autorization' : ctx.meta.headers.autorization
-                      }
+                      headers : headers
                     })
                   ])
                   const oldContext= JSON.parse(JSON.stringify(res['@context']));
                   //context have to be replce because jsonld librairy don't support url with localhost
                   res['@context']=defaultContext['@context'];
                   await ldpNavigator.init(res);
-                  console.log("res",res);
-                  if (res['pair:organizationOfMembership']){
+                  // console.log("res",res);
+                  // if (res['pair:organizationOfMembership']){
                       res= await ldpNavigator.dereference(res,container.ldpDereferencePlan);
-                  }
+                  // }
                   res['@context']=oldContext;
                 }
               }
